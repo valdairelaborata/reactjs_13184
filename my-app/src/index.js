@@ -7,34 +7,33 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const nome = "Valdair"
 
+function Ola(props) {
+  return <h1>Olá {props.nome}</h1>
+}
 
+function Mensagem() {
+  return <h2>Seja bem - vindo!!</h2>
+}
 
-
-function tick() {
-  const element = (
-    <div>
-      <h1>Olá, {nome}</h1>
-      <h2>Hora agora: {new Date().toLocaleTimeString()}</h2>
-    </div>
-  );
-
-  root.render(element)
+class Saudacao extends React.Component {
+  render() {
+    return <h1>Olá {this.props.identificacao}</h1>
+  }
 }
 
 
 
-setInterval(tick, 1000);
+root.render(
+  <div>
+    <Ola nome="Valdair"></Ola>  
+    <Saudacao identificacao="Valdair"></Saudacao>
 
 
+    <Mensagem></Mensagem>
+  </div>
+)
 
-// root.render(
-//   <React.StrictMode>
-//     <Opa />
-//     <App />   
-//   </React.StrictMode>
-// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
