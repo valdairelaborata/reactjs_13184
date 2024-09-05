@@ -9,6 +9,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const nome = "Valdair"
 
+
+
+
 function tick() {
   const element = (
     <div>
