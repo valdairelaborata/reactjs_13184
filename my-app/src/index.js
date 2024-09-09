@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Opa from './Opa'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,15 +20,39 @@ class Saudacao extends React.Component {
   }
 }
 
+function Lista(props) {
+  return <>
+    <h1>{props.titulo}</h1>
+    <hr></hr>
+    <ol>
+      <li>Itens - 01</li>
+      <li>Itens - 02</li>
+      <li>Itens - 03</li>
+      <li>Itens - 04</li>
+    </ol>
+  </>
+}
+
+class Perfil extends React.Component {
+  render() {
+    return <>
+      <hr></hr>
+      <h1>Perfil</h1>
+      <h2>Nome</h2>
+      <h3>Valdair</h3>
+      <h2>Area de interesse</h2>
+      <h3>Pecaria e xpto</h3>
+      <h2>Hobbies</h2>
+      <h3>Andar de bike</h3>
+    </>
+  }
+}
 
 
 root.render(
   <div>
-    <Ola nome="Valdair"></Ola>  
-    <Saudacao identificacao="Valdair"></Saudacao>
-
-
-    <Mensagem></Mensagem>
+    <Lista titulo="Lista de itens"></Lista>
+    <Perfil></Perfil>
   </div>
 )
 
