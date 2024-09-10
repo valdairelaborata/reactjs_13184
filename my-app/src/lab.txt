@@ -1,0 +1,1 @@
+Crie um componente React que permite incrementar e decrementar um contador até um limite máximo e mínimo. Quando o contador atinge esses limites, os botões correspondentes são desabilitados:

@@ -13,6 +13,8 @@ class ButtonComponent extends React.Component {
     click() {
         // var temp = this.state.nr_clicks;
         console.log("Aqui vamos incrementar o click")
+
+        this.setState({nr_clicks })
     }
 
     render() {
