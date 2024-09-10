@@ -2,20 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-// import Lista from './Lista'
-// import Perfil from './Perfil'
-// import Botao from './Button';
-import ButtonComponent from './ButtonComponent'
+import ButtonEvent from './ButtonEvent'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <div>
-    {/* <Lista titulo="Lista de itens"></Lista>
-    <Perfil perfil="Informações de perfil" nome="Valdair" area="Construção" hobbies="Pescaria"></Perfil> */}
-
-    {/* <Botao label="Click aqui!"></Botao> */}
-    <ButtonComponent label="Click aqui!"></ButtonComponent>
+    <ButtonEvent></ButtonEvent>
   </div>
 )
 
