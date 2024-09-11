@@ -19,8 +19,8 @@ class ButtonEvent extends React.Component {
     render() {
         return <>
             <p>
-                <button onClick={this.click}>Clique aqui para imprimir uma mensagem no console do browser.</button>
-                
+                <button onClick={this.click} disabled={this.state.nr_clicks >= 10} >Clique aqui para imprimir uma mensagem no console do browser.</button>
+
                 <br></br>
                 <label>Você clicou {this.state.nr_clicks} x no botão</label>
             </p>
