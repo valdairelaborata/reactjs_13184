@@ -9,6 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
     <ButtonEvent></ButtonEvent>
+    <ButtonEvent></ButtonEvent>
   </div>
 )
 
