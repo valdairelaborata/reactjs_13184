@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Contador from './Contador'
+import ContadorFunc from './ContadorFunc'
 
 
 // import ButtonEvent from './ButtonEvent'
@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <div>
-    <Contador minimo={0} maximo={3} ></Contador>
+    <ContadorFunc minimo={0} maximo={3}></ContadorFunc>
   </div>
 )
 
