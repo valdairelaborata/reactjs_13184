@@ -6,9 +6,7 @@ class Contador extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            nr_clicks: 0,
-            maximo: 5,
-            minino: 0
+            nr_clicks: 0
         }
 
         this.incrementar = this.incrementar.bind(this)
@@ -24,12 +22,16 @@ class Contador extends React.Component {
     }
 
     render() {
+
+        const { nr_clicks } = this.state;
+        const { maximo, minimo } = this.props;
+
         return <>
-            <button onClick={this.incrementar} disabled={this.state.nr_clicks >= this.state.maximo}>Incrementar</button>
+            <button onClick={this.incrementar} disabled={nr_clicks >= maximo}>Incrementar</button>
             <br></br>
-            <button onClick={this.decrementar} disabled={this.state.nr_clicks <= this.state.minino}>Decrementar</button>
+            <button onClick={this.decrementar} disabled={nr_clicks <= minimo}>Decrementar</button>
             <br></br>
-            <label>Você clicou {this.state.nr_clicks} vezes!</label>
+            <label>Você clicou {nr_clicks} vezes!</label>
         </>
     }
 }
