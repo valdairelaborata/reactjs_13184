@@ -8,10 +8,14 @@ function Atividade() {
 
 
     const adicionar = () => {
-        setAtividades([atividades, nomeAtividade])
+        setAtividades([...atividades, nomeAtividade]);
         setNomeAtividade("")
-        console.log(atividades)
+    }
 
+    const excluir = (index) => {
+        const atividades_temp = [...atividades]
+        atividades_temp.splice(index, 1)
+        setAtividades(atividades_temp)
     }
 
     return (
@@ -26,10 +30,13 @@ function Atividade() {
             <button onClick={adicionar}>Adicionar</button>
 
             <h2>Atividades</h2>
-            <ul>
-                {atividades.map((item, indice) => {
-                    <li key={indice}>{item}</li>
-                })}
+            <ul >
+                {atividades.map((item, index) => (
+                    <li key={index}>
+                        {item}
+                        <button onClick={() => excluir(index)} >Excluir</button>
+                    </li>
+                ))}
             </ul>
         </>
     )
