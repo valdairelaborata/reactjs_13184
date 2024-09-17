@@ -1,15 +1,31 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
 function Atividade() {
     const [atividades, setAtividades] = useState([]);
     const [nomeAtividade, setNomeAtividade] = useState('');
+    const [funcao, setFuncao] = useState(false)
 
+    useEffect(() => {
+        const dadosLocalStorage = JSON.parse(localStorage.getItem('atividades'));
+        if (dadosLocalStorage) {
+            setAtividades(dadosLocalStorage)
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('atividades', JSON.stringify(atividades));
+    }, [atividades]);
+
+    useEffect(() => { 
+        alert("Opa, hook da funcao")
+    }, [funcao]);
 
     const adicionar = () => {
         setAtividades([...atividades, nomeAtividade]);
-        setNomeAtividade("")
+        setNomeAtividade("");
+        setFuncao(true);
     }
 
     const excluir = (index) => {
