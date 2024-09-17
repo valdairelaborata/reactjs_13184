@@ -1,4 +1,7 @@
 
 
-Crie um componente para o cadastro de produtos com 3 campos (Nome, Preço, descrição) e um botão para salvar.
+1 - Crie um componente para o cadastro de produtos com 3 campos (Nome, Preço, descrição) e um botão para salvar.
 Ao clicar no salvar o componente deve renderizar os campos numa lista abaixo do botão salvar.
+
+
+2 - Incremente para utilizar o localstorage, com base no que fizemos no componente de atividades.
