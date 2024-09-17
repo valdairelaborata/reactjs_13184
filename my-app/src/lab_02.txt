@@ -1,4 +1,4 @@
 
 
 Crie um componente para o cadastro de produtos com 3 campos (Nome, Preço, descrição) e um botão para salvar.
-Ao clicar no salvar o componente deve imprimir no console a informação dos 3 campos.
+Ao clicar no salvar o componente deve renderizar os campos numa lista abaixo do botão salvar.

@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Atividade from './Atividade'
+import Produtos from './Produtos'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <div>
-    <Atividade></Atividade>
+    <Produtos></Produtos>
   </div>
 )
 
