@@ -13,6 +13,7 @@ class Contador extends React.Component {
         this.decrementar = this.decrementar.bind(this)
     }
 
+
     incrementar() {
         this.setState({ nr_clicks: this.state.nr_clicks + 1 })
     }
