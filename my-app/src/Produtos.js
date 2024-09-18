@@ -1,9 +1,22 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Produtos() {
     const [produto, setProduto] = useState({ nome: "", preco: "", descricao: "" })
     const [produtos, setProdutos] = useState([])
+
+    useEffect(() => {
+        const produtosLocalStorage = JSON.parse(localStorage.getItem('produtos'));
+        if (produtosLocalStorage) {
+            setProdutos(produtosLocalStorage)
+        }
+    }, []);
+
+
+    useEffect(() => {
+        localStorage.setItem('produtos', JSON.stringify(produtos))
+    }, [produtos]);
+
 
 
     const onchangeProduto = (e) => {
@@ -13,7 +26,7 @@ function Produtos() {
     const adicionar = () => {
         setProdutos([...produtos, produto])
     }
-    
+
     const excluir = (index) => {
         const produtos_temp = [...produtos]
         produtos_temp.splice(index, 1)
@@ -55,7 +68,7 @@ function Produtos() {
                         <p>
                             <strong>Nome:</strong> {item.nome} <br />
                             <strong>Preço:</strong> {item.preco}<br />
-                            <strong>Descricao:</strong> {item.descricao}                           
+                            <strong>Descricao:</strong> {item.descricao}
                         </p>
                         <button onClick={() => excluir(index)}>Excluir</button>
 
