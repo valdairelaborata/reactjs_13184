@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-
+import './Login.css'
 
 
 function Login() {
@@ -20,7 +20,6 @@ function Login() {
 
     }, [])
 
-
     const logar = () => {
         const usuarios = JSON.parse(localStorage.getItem("usuarios"))
 
@@ -35,18 +34,19 @@ function Login() {
     }
 
     return (
-        <div>
-            <div>
+        <div className="container" >
+            <div className="login-box">
                 <h2>Login</h2>
-                <div>
+                <div className="input-group" >
                     <input
+                        id="txtLogin"
                         type="text"
                         placeholder="Informe o usuário"
                         value={login}
                         onChange={(e) => setLogin(e.target.value)}>
                     </input>
                 </div>
-                <div>
+                <div className="input-group">
                     <input
                         type="password"
                         placeholder="Informe a senha"
@@ -54,7 +54,7 @@ function Login() {
                         onChange={(e) => setSenha(e.target.value)}>
                     </input>
                 </div>
-                <button onClick={logar}>Logar</button>
+                <button className="input-group" onClick={logar}>Logar</button>
             </div>
         </div>
 
