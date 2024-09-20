@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from "react";
+import Modal from './modal/Modal'
 
 function Produtos() {
     const [produto, setProduto] = useState({ nome: "", preco: "", descricao: "" })
     const [produtos, setProdutos] = useState([])
+    const [modalVisivel, setModalVisivel] = useState(false)
 
     useEffect(() => {
         const produtosLocalStorage = JSON.parse(localStorage.getItem('produtos'));
@@ -28,9 +30,21 @@ function Produtos() {
     }
 
     const excluir = (index) => {
-        const produtos_temp = [...produtos]
-        produtos_temp.splice(index, 1)
-        setProdutos(produtos_temp)
+        // const produtos_temp = [...produtos]
+        // produtos_temp.splice(index, 1)
+        // setProdutos(produtos_temp)
+        setModalVisivel(true)
+    }
+
+    const aoConfirmar = () => {
+        alert("Confirmado!")
+        setModalVisivel(false)
+
+    }
+
+    const aoCancelar = () => {
+        alert("Cancelado!")
+        setModalVisivel(false)
     }
 
     return (
@@ -75,6 +89,13 @@ function Produtos() {
                     </li>
                 ))}
             </ul>
+
+            <Modal
+                ehVisivel={modalVisivel}
+                aoConfirmar={aoConfirmar}
+                aoCancelar={aoCancelar}>
+            </Modal>
+
         </>
     )
 }
