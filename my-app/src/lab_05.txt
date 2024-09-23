@@ -1,0 +1,5 @@
+
+
+1 - Ajuste a modal para exibir o nome do produto que o usuário selecionou para excluir.
+2 - Crie um estilo para a lista de produtos.
+
