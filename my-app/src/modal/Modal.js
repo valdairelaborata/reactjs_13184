@@ -1,5 +1,7 @@
 
 import React from "react";
+import './Modal.css'
+
 
 const Modal = ({ ehVisivel, aoConfirmar, aoCancelar }) => {
 
@@ -7,8 +9,8 @@ const Modal = ({ ehVisivel, aoConfirmar, aoCancelar }) => {
         return null;
 
     return (
-        <div>
-            <div>
+        <div className="modal-overlay">
+            <div className="modal-content">
                 <h2>Mensagem de confirmação.</h2>
                 <p>Deseja realmente seguir com a ação?</p>
                 <button onClick={aoConfirmar} >Confirmar</button>
