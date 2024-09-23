@@ -6,6 +6,7 @@ function Produtos() {
     const [produto, setProduto] = useState({ nome: "", preco: "", descricao: "" })
     const [produtos, setProdutos] = useState([])
     const [modalVisivel, setModalVisivel] = useState(false)
+    const [index, setIndex] = useState(undefined)
 
     useEffect(() => {
         const produtosLocalStorage = JSON.parse(localStorage.getItem('produtos'));
@@ -30,20 +31,18 @@ function Produtos() {
     }
 
     const excluir = (index) => {
-        // const produtos_temp = [...produtos]
-        // produtos_temp.splice(index, 1)
-        // setProdutos(produtos_temp)
+        setIndex(index)
         setModalVisivel(true)
     }
 
     const aoConfirmar = () => {
-        alert("Confirmado!")
+        const produtos_temp = [...produtos]
+        produtos_temp.splice(index, 1)
+        setProdutos(produtos_temp)
         setModalVisivel(false)
-
     }
 
     const aoCancelar = () => {
-        alert("Cancelado!")
         setModalVisivel(false)
     }
 

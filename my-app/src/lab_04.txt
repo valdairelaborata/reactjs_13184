@@ -1,4 +1,4 @@
 
 
-1 - Adicione uma modal para confirmar a exclusão de registro de produtos, com base no que fizemos no componente e atividade.
+1 - Adicione uma modal para confirmar a exclusão de registro de produtos, com base no que fizemos no componente de atividade.
 
