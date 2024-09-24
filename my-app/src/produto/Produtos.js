@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from "react";
-import Modal from './modal/Modal'
+import './Produtos.css'
+
+import Modal from '../modal/Modal'
 
 function Produtos() {
     const [produto, setProduto] = useState({ nome: "", preco: "", descricao: "" })
@@ -49,7 +51,7 @@ function Produtos() {
     }
 
     return (
-        <>
+        <div className="container">
             <input
                 type="text"
                 name="nome"
@@ -97,8 +99,7 @@ function Produtos() {
                 aoCancelar={aoCancelar}
                 mensagem={mensagem}>
             </Modal>
-
-        </>
+        </div>
     )
 }
 

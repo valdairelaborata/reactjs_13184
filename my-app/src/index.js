@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Produtos from './Produtos'
+import Produtos from './produto/Produtos'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
