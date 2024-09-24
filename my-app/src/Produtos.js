@@ -7,6 +7,7 @@ function Produtos() {
     const [produtos, setProdutos] = useState([])
     const [modalVisivel, setModalVisivel] = useState(false)
     const [index, setIndex] = useState(undefined)
+    const [mensagem, setMensagem] = useState(undefined)
 
     useEffect(() => {
         const produtosLocalStorage = JSON.parse(localStorage.getItem('produtos'));
@@ -30,8 +31,9 @@ function Produtos() {
         setProdutos([...produtos, produto])
     }
 
-    const excluir = (index) => {
+    const excluir = (index, nomeProduto) => {
         setIndex(index)
+        setMensagem("Deseja realmente excluir o produto (" + nomeProduto + ")")
         setModalVisivel(true)
     }
 
@@ -83,7 +85,7 @@ function Produtos() {
                             <strong>Preço:</strong> {item.preco}<br />
                             <strong>Descricao:</strong> {item.descricao}
                         </p>
-                        <button onClick={() => excluir(index)}>Excluir</button>
+                        <button onClick={() => excluir(index, item.nome)}>Excluir</button>
 
                     </li>
                 ))}
@@ -92,7 +94,8 @@ function Produtos() {
             <Modal
                 ehVisivel={modalVisivel}
                 aoConfirmar={aoConfirmar}
-                aoCancelar={aoCancelar}>
+                aoCancelar={aoCancelar}
+                mensagem={mensagem}>
             </Modal>
 
         </>

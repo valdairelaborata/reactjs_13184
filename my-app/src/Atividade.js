@@ -9,6 +9,7 @@ function Atividade() {
     const [nomeAtividade, setNomeAtividade] = useState('');
     const [modalVisivel, setModalVisivel] = useState(false)
     const [index, setIndex] = useState("")
+    const [mensagem, setMensagem] = useState(undefined)
 
 
     useEffect(() => {
@@ -28,14 +29,15 @@ function Atividade() {
         setNomeAtividade("");
     }
 
-    const excluir = (index) => {
+    const excluir = (index, item) => {
         setIndex(index)
+        setMensagem("Confirma excluir a atividade (" + item + ")?")
         setModalVisivel(true)
     }
 
     const aoConfirmar = () => {
         const atividades_temp = [...atividades]
-         atividades_temp.splice(index, 1)
+        atividades_temp.splice(index, 1)
         setAtividades(atividades_temp)
         setModalVisivel(false)
     }
@@ -60,7 +62,7 @@ function Atividade() {
                 {atividades.map((item, index) => (
                     <li key={index}>
                         {item}
-                        <button onClick={() => excluir(index)} >Excluir</button>
+                        <button onClick={() => excluir(index, item)} >Excluir</button>
                     </li>
                 ))}
             </ul>
@@ -68,7 +70,8 @@ function Atividade() {
             <Modal
                 ehVisivel={modalVisivel}
                 aoConfirmar={aoConfirmar}
-                aoCancelar={aoCancelar}>
+                aoCancelar={aoCancelar}
+                mensagem={mensagem}>
             </Modal>
         </>
     )

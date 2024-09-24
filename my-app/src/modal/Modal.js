@@ -3,7 +3,7 @@ import React from "react";
 import './Modal.css'
 
 
-const Modal = ({ ehVisivel, aoConfirmar, aoCancelar }) => {
+const Modal = ({ ehVisivel, aoConfirmar, aoCancelar, mensagem }) => {
 
     if (!ehVisivel)
         return null;
@@ -12,7 +12,9 @@ const Modal = ({ ehVisivel, aoConfirmar, aoCancelar }) => {
         <div className="modal-overlay">
             <div className="modal-content">
                 <h2>Mensagem de confirmação.</h2>
-                <p>Deseja realmente seguir com a ação?</p>
+                <p>
+                    <strong>{mensagem}</strong>
+                </p>
                 <button onClick={aoConfirmar} >Confirmar</button>
                 <button onClick={aoCancelar} >Cancelar</button>
             </div>
