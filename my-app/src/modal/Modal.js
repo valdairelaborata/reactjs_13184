@@ -15,8 +15,8 @@ const Modal = ({ ehVisivel, aoConfirmar, aoCancelar, mensagem }) => {
                 <p>
                     <strong>{mensagem}</strong>
                 </p>
-                <button onClick={aoConfirmar} >Confirmar</button>
-                <button onClick={aoCancelar} >Cancelar</button>
+                <button className="modal-button-confirm" onClick={aoConfirmar} >Confirmar</button>
+                <button className="modal-button-cancel" onClick={aoCancelar} >Cancelar</button>
             </div>
         </div>
     );

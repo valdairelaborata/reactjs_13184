@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 
-import Modal from './modal/Modal'
+import Modal from '../modal/Modal'
 
 
 function Atividade() {

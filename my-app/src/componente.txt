@@ -1,3 +1,0 @@
-
-
-Crie um componente que ao clicar em um botão escreva uma mensagem no console do browser.
