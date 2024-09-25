@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import Modal from '../modal/Modal'
 
@@ -11,16 +12,26 @@ function Atividade() {
     const [index, setIndex] = useState("")
     const [mensagem, setMensagem] = useState(undefined)
 
+    const API_URL = 'http://localhost:3001/atividades'
 
     useEffect(() => {
-        const dadosLocalStorage = JSON.parse(localStorage.getItem('atividades'));
-        if (dadosLocalStorage) {
-            setAtividades(dadosLocalStorage)
-        }
+        axios.get(API_URL).
+            then((response) => {
+                console.log(response.data)
+                setAtividades(response.data)
+            }).
+            catch((error) => {
+                console.log(error)
+            });
+
+        // const dadosLocalStorage = JSON.parse(localStorage.getItem('atividades'));
+        // if (dadosLocalStorage) {
+        //     setAtividades(dadosLocalStorage)
+        // }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('atividades', JSON.stringify(atividades));
+        // localStorage.setItem('atividades', JSON.stringify(atividades));
     }, [atividades]);
 
 
@@ -59,10 +70,10 @@ function Atividade() {
 
             <h2>Atividades</h2>
             <ul >
-                {atividades.map((item, index) => (
-                    <li key={index}>
-                        {item}
-                        <button onClick={() => excluir(index, item)} >Excluir</button>
+                {atividades.map((atividade) => (
+                    <li key={atividade.id}>
+                        {atividade.nome}
+                        <button onClick={() => excluir(atividade.id, atividade.nome)} >Excluir</button>
                     </li>
                 ))}
             </ul>
