@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import './Atividade.css';
 import Modal from '../modal/Modal'
 
 
@@ -58,22 +58,26 @@ function Atividade() {
     }
 
     return (
-        <>
+        <div className="container">
+            <label className="label-atividade">
+                Nome da atividade:
+            </label>
             <input
+                className="input-atividade"
                 type="text"
                 value={nomeAtividade}
                 onChange={(e) => setNomeAtividade(e.target.value)}
                 placeholder="Digite o nome da atividade">
             </input>
             <hr></hr>
-            <button onClick={adicionar}>Adicionar</button>
+            <button className="btn-adicionar" onClick={adicionar} >Adicionar</button>
 
             <h2>Atividades</h2>
-            <ul >
+            <ul className="lista-atividades" >
                 {atividades.map((atividade) => (
-                    <li key={atividade.id}>
+                    <li key={atividade.id} className="item-atividade">
                         {atividade.nome}
-                        <button onClick={() => excluir(atividade.id, atividade.nome)} >Excluir</button>
+                        <button className="btn-excluir" onClick={() => excluir(atividade.id, atividade.nome)} >Excluir</button>
                     </li>
                 ))}
             </ul>
@@ -84,7 +88,7 @@ function Atividade() {
                 aoCancelar={aoCancelar}
                 mensagem={mensagem}>
             </Modal>
-        </>
+        </div>
     )
 
 }
