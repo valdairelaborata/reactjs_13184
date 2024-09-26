@@ -1,26 +1,32 @@
 
 import React, { useState, useEffect } from "react";
-import './Produtos.css'
+import axios from "axios";
 
+import './Produtos.css'
 import Modal from '../modal/Modal'
 
 function Produtos() {
     const [produto, setProduto] = useState({ nome: "", preco: "", descricao: "" })
     const [produtos, setProdutos] = useState([])
     const [modalVisivel, setModalVisivel] = useState(false)
-    const [index, setIndex] = useState(undefined)
+    const [excluirProduto, setExcluirProduto] = useState(undefined)
     const [mensagem, setMensagem] = useState(undefined)
 
+    const API_URL = "http://localhost:3001/produtos"
+
     useEffect(() => {
-        const produtosLocalStorage = JSON.parse(localStorage.getItem('produtos'));
-        if (produtosLocalStorage) {
-            setProdutos(produtosLocalStorage)
-        }
+        axios.get(API_URL).
+            then((response) => {
+                setProdutos(response.data)
+            }).
+            catch((error) => {
+                console.log(error)
+            })
     }, []);
 
 
     useEffect(() => {
-        localStorage.setItem('produtos', JSON.stringify(produtos))
+
     }, [produtos]);
 
 
@@ -30,19 +36,35 @@ function Produtos() {
     }
 
     const adicionar = () => {
-        setProdutos([...produtos, produto])
+        axios.post(API_URL, produto).
+            then((response) => {
+                console.log(response)
+            }).
+            catch((error) => {
+                console.log(error)
+            })
+        // setProdutos([...produtos, produto])
     }
 
-    const excluir = (index, nomeProduto) => {
-        setIndex(index)
-        setMensagem("Deseja realmente excluir o produto (" + nomeProduto + ")")
+    const excluir = (item) => {
+        setExcluirProduto(item)
+        setMensagem("Deseja realmente excluir o produto? (" + item.nome + ")")
         setModalVisivel(true)
     }
 
     const aoConfirmar = () => {
-        const produtos_temp = [...produtos]
-        produtos_temp.splice(index, 1)
-        setProdutos(produtos_temp)
+        // const produtos_temp = [...produtos]
+        // produtos_temp.splice(index, 1)
+        // setProdutos(produtos_temp)
+
+        axios.delete(`${API_URL}/${excluirProduto.id}`).
+            then((response) => {
+                console.log(response)
+            }).
+            catch((error) => {
+                console.error(error)
+            })
+
         setModalVisivel(false)
     }
 
@@ -80,14 +102,14 @@ function Produtos() {
             <hr></hr>
             <h2>Produtos</h2>
             <ul >
-                {produtos.map((item, index) => (
-                    <li key={index}>
+                {produtos.map((item) => (
+                    <li key={item.id}>
                         <p>
                             <strong>Nome:</strong> {item.nome} <br />
                             <strong>Preço:</strong> {item.preco}<br />
                             <strong>Descricao:</strong> {item.descricao}
                         </p>
-                        <button onClick={() => excluir(index, item.nome)}>Excluir</button>
+                        <button onClick={() => excluir(item)}>Excluir</button>
 
                     </li>
                 ))}

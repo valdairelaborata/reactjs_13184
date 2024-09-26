@@ -1,0 +1,22 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Balde",
+      "preco": 10,
+      "descricao": "Balde para desenho em parede"
+    },
+    {
+      "id": "2",
+      "nome": "Mouse",
+      "preco": 20,
+      "descricao": "Mouse para xpto"
+    },
+    {
+      "id": "aed0",
+      "nome": "Mesa",
+      "preco": "500",
+      "descricao": "654654"
+    }
+  ]
+}
