@@ -6,7 +6,7 @@ import './Produtos.css'
 import Modal from '../modal/Modal'
 
 function Produtos() {
-    const [produto, setProduto] = useState({ nome: "", preco: "", descricao: "" })
+    const [produto, setProduto] = useState({ id: null, nome: "", preco: "", descricao: "" })
     const [produtos, setProdutos] = useState([])
     const [modalVisivel, setModalVisivel] = useState(false)
     const [excluirProduto, setExcluirProduto] = useState(undefined)
@@ -15,6 +15,11 @@ function Produtos() {
     const API_URL = "http://localhost:3001/produtos"
 
     useEffect(() => {
+        carregarTela();
+    }, []);
+
+
+    const carregarTela = async () => {
         axios.get(API_URL).
             then((response) => {
                 setProdutos(response.data)
@@ -22,7 +27,7 @@ function Produtos() {
             catch((error) => {
                 console.log(error)
             })
-    }, []);
+    }
 
 
     useEffect(() => {
@@ -35,15 +40,17 @@ function Produtos() {
         setProduto({ ...produto, [e.target.name]: e.target.value })
     }
 
-    const adicionar = () => {
-        axios.post(API_URL, produto).
-            then((response) => {
-                console.log(response)
-            }).
-            catch((error) => {
-                console.log(error)
-            })
-        // setProdutos([...produtos, produto])
+    const adicionar = async () => {
+
+        try {
+            await axios.post(API_URL, produto)
+            carregarTela()
+            setProduto({ nome: "", preco: "", descricao: "" })
+        }
+        catch (error) {
+            console.log(error)
+        }
+
     }
 
     const excluir = (item) => {
@@ -52,18 +59,18 @@ function Produtos() {
         setModalVisivel(true)
     }
 
-    const aoConfirmar = () => {
-        // const produtos_temp = [...produtos]
-        // produtos_temp.splice(index, 1)
-        // setProdutos(produtos_temp)
+    const editar = (item) => {
+        setProduto(item)
+    }
 
-        axios.delete(`${API_URL}/${excluirProduto.id}`).
-            then((response) => {
-                console.log(response)
-            }).
-            catch((error) => {
-                console.error(error)
-            })
+    const aoConfirmar = async () => {
+
+        try {
+            await axios.delete(`${API_URL}/${excluirProduto.id}`);
+            carregarTela();
+        } catch (error) {
+            console.error(error)
+        }
 
         setModalVisivel(false)
     }
@@ -96,7 +103,9 @@ function Produtos() {
                 placeholder="Informe o descrição"        >
             </input>
             <p>
-                <button onClick={adicionar}>Adicionar</button>
+                <button onClick={adicionar}>
+                    {produto.id === null ? 'Adicionar' : 'Salvar'}
+                </button>
             </p>
 
             <hr></hr>
@@ -110,7 +119,7 @@ function Produtos() {
                             <strong>Descricao:</strong> {item.descricao}
                         </p>
                         <button onClick={() => excluir(item)}>Excluir</button>
-
+                        <button onClick={() => editar(item)}>Editar</button>
                     </li>
                 ))}
             </ul>
