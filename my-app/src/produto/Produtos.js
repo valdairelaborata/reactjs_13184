@@ -71,6 +71,11 @@ function Produtos() {
         setEditando(true)
     }
 
+    const cancelar = () => {
+        setEditando(false)
+        setProduto({ nome: "", preco: "", descricao: "" })
+    }
+
     const aoConfirmar = async () => {
 
         try {
@@ -114,6 +119,9 @@ function Produtos() {
                 <button onClick={tratarClick}>
                     {editando ? 'Salvar' : 'Adicionar'}
                 </button>
+                {editando === true && (
+                    <button onClick={cancelar}>Cancelar</button>
+                )}
             </p>
 
             <hr></hr>
