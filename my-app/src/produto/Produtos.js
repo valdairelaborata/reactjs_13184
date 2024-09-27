@@ -11,6 +11,7 @@ function Produtos() {
     const [modalVisivel, setModalVisivel] = useState(false)
     const [excluirProduto, setExcluirProduto] = useState(undefined)
     const [mensagem, setMensagem] = useState(undefined)
+    const [editando, setEditando] = useState(false)
 
     const API_URL = "http://localhost:3001/produtos"
 
@@ -40,12 +41,18 @@ function Produtos() {
         setProduto({ ...produto, [e.target.name]: e.target.value })
     }
 
-    const adicionar = async () => {
-
+    const tratarClick = async () => {
         try {
-            await axios.post(API_URL, produto)
-            carregarTela()
-            setProduto({ nome: "", preco: "", descricao: "" })
+            if (editando) {
+                await axios.put(API_URL, produto)
+            }
+            else {
+                await axios.post(API_URL, produto)
+            }
+
+            await carregarTela()
+
+            //setProduto({ nome: "", preco: "", descricao: "" })
         }
         catch (error) {
             console.log(error)
@@ -61,13 +68,14 @@ function Produtos() {
 
     const editar = (item) => {
         setProduto(item)
+        setEditando(true)
     }
 
     const aoConfirmar = async () => {
 
         try {
             await axios.delete(`${API_URL}/${excluirProduto.id}`);
-            carregarTela();
+            await carregarTela();
         } catch (error) {
             console.error(error)
         }
@@ -103,8 +111,8 @@ function Produtos() {
                 placeholder="Informe o descrição"        >
             </input>
             <p>
-                <button onClick={adicionar}>
-                    {produto.id === null ? 'Adicionar' : 'Salvar'}
+                <button onClick={tratarClick}>
+                    {editando ? 'Salvar' : 'Adicionar'}
                 </button>
             </p>
 

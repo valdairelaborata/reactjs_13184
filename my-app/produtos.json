@@ -1,22 +1,22 @@
 {
   "produtos": [
     {
-      "id": "1552",
-      "nome": "Monitor",
-      "preco": "10",
+      "id": 10,
+      "nome": "Celular",
+      "preco": "5000",
       "descricao": "Teste"
     },
     {
-      "id": "a2f9",
-      "nome": "Caneta",
-      "preco": "25",
-      "descricao": "Teste"
+      "id": 11,
+      "nome": "TV",
+      "preco": "500",
+      "descricao": "1000"
     },
     {
-      "id": "2698",
-      "nome": "Teclado",
+      "id": 12,
+      "nome": "Mouse",
       "preco": "20",
-      "descricao": "Teste"
+      "descricao": "202020"
     }
   ]
 }
