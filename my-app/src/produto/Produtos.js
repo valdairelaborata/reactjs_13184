@@ -6,7 +6,7 @@ import './Produtos.css'
 import Modal from '../modal/Modal'
 
 function Produtos() {
-    const [produto, setProduto] = useState({ id: null, nome: "", preco: "", descricao: "" })
+    const [produto, setProduto] = useState({ nome: "", preco: "", descricao: "" })
     const [produtos, setProdutos] = useState([])
     const [modalVisivel, setModalVisivel] = useState(false)
     const [excluirProduto, setExcluirProduto] = useState(undefined)
@@ -44,7 +44,7 @@ function Produtos() {
     const tratarClick = async () => {
         try {
             if (editando) {
-                await axios.put(API_URL, produto)
+                await axios.put(`${API_URL}/${produto.id}`, produto)
             }
             else {
                 await axios.post(API_URL, produto)
