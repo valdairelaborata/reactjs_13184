@@ -1,0 +1,5 @@
+
+
+1 - Ajuste o componente de login para validar se o usuário é válido no back-end.
+Para fazer esse fluxo utilize o mesmo modelo que fizemos para a busca de produtos.
+
