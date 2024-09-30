@@ -1,34 +1,28 @@
 {
   "produtos": [
     {
-      "id": null,
-      "nome": "Celular",
-      "preco": "5000",
-      "descricao": "Teste"
+      "id": "d9c9",
+      "nome": "Mouse xpto",
+      "preco": "600",
+      "descricao": "Teste 0500000"
     },
     {
-      "id": null,
-      "nome": "TV",
+      "id": "00c3",
+      "nome": "Teclado ",
+      "preco": "180",
+      "descricao": "Teste 0600"
+    },
+    {
+      "id": "9ab6",
+      "nome": "Cadeira ",
       "preco": "500",
-      "descricao": "1000"
+      "descricao": "Teste 0700"
     },
     {
-      "id": null,
-      "nome": "Mouse",
+      "id": "3064",
+      "nome": "Copa",
       "preco": "20",
-      "descricao": "202020"
-    },
-    {
-      "id": null,
-      "nome": "10",
-      "preco": "10",
-      "descricao": "10"
-    },
-    {
-      "id": "5642",
-      "nome": "caneta ",
-      "preco": "200",
-      "descricao": "200"
+      "descricao": "Teste 0800"
     }
   ]
 }

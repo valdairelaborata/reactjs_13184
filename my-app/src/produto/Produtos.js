@@ -50,9 +50,12 @@ function Produtos() {
                 await axios.post(API_URL, produto)
             }
 
+
+            setEditando(false)
+            setProduto({ nome: "", preco: "", descricao: "" })
+
             await carregarTela()
 
-            //setProduto({ nome: "", preco: "", descricao: "" })
         }
         catch (error) {
             console.log(error)
