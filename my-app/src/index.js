@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
     <Router>
-      {/* <Cabecalho /> */}
+      <Cabecalho />
       <div>
         <Routes>
           <Route path='/' element={<Login />} ></Route>

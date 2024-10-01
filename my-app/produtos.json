@@ -1,9 +1,19 @@
 {
+  "usuarios": [
+    {
+      "login": "admin",
+      "senha": "555"
+    },
+    {
+      "login": "ana",
+      "senha": "456"
+    }
+  ],
   "produtos": [
     {
       "id": "d9c9",
       "nome": "Mouse xpto",
-      "preco": "600",
+      "preco": "700",
       "descricao": "Teste 0500000"
     },
     {
@@ -25,5 +35,4 @@
       "descricao": "Teste 0800"
     }
   ]
-  
 }

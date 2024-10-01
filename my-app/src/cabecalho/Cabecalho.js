@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Cabecalho = () => {
 
@@ -7,10 +8,10 @@ const Cabecalho = () => {
         <nav>
             <ul>
                 <li>
-                    <link to="/">Login</link>
+                    <Link to="/">Login</Link>
                 </li>
                 <li>
-                    <link to="/produtos">Produtos</link>
+                    <Link to="/produtos">Produtos</Link>
                 </li>
             </ul>
         </nav>
